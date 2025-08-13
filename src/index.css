@@ -2,39 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Sugar Industry Digital Twin Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Brand Colors */
+    --background: 210 20% 98%;
+    --foreground: 210 24% 16%;
 
+    /* Card System */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 24% 16%;
 
+    /* Interactive Elements */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 24% 16%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Sustainability Green */
+    --primary: 142 69% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 142 69% 48%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Industrial Blue */
+    --secondary: 213 94% 68%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 213 94% 58%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Tones */
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 16% 46%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Earth/Agriculture */
+    --accent: 35 100% 74%;
+    --accent-foreground: 210 24% 16%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors */
+    --success: 142 69% 58%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 48 100% 67%;
+    --warning-foreground: 210 24% 16%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Interactive States */
+    --border: 210 20% 90%;
+    --input: 210 20% 96%;
+    --ring: 142 69% 58%;
+
+    /* AI & Technology Colors */
+    --ai-primary: 262 83% 58%;
+    --ai-secondary: 262 83% 95%;
+    
+    /* Circularity Colors */
+    --circular-primary: 142 69% 58%;
+    --circular-secondary: 142 69% 95%;
+    
+    /* Energy Colors */
+    --energy-primary: 48 100% 67%;
+    --energy-secondary: 48 100% 95%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 69% 58%), hsl(213 94% 68%));
+    --gradient-sustainability: linear-gradient(135deg, hsl(142 69% 58%), hsl(35 100% 74%));
+    --gradient-tech: linear-gradient(135deg, hsl(213 94% 68%), hsl(262 83% 58%));
+    --gradient-circular: linear-gradient(90deg, hsl(142 69% 58%), hsl(142 69% 48%));
+    
+    /* Shadows & Effects */
+    --shadow-elegant: 0 10px 30px -10px hsl(210 24% 16% / 0.1);
+    --shadow-glow: 0 0 40px hsl(142 69% 58% / 0.15);
+    --shadow-ai: 0 0 40px hsl(262 83% 58% / 0.15);
+
+    /* Animation Tokens */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Layout */
 
     --radius: 0.5rem;
 
