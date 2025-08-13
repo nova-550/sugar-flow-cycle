@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -87,6 +88,31 @@ const byProducts = [
 ];
 
 export function ValueChainOverview() {
+  const [realTimeMetrics, setRealTimeMetrics] = useState({
+    overallEfficiency: 89.2,
+    carbonSavings: 34,
+    wasteDiverted: 97,
+    waterSaved: 2.4,
+    co2Reduced: 847,
+    renewableEnergy: 76
+  });
+
+  // Simulate real-time updates
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRealTimeMetrics(prev => ({
+        overallEfficiency: Math.max(85, Math.min(95, prev.overallEfficiency + (Math.random() - 0.5) * 1.5)),
+        carbonSavings: Math.max(30, Math.min(40, prev.carbonSavings + (Math.random() - 0.5) * 2)),
+        wasteDiverted: Math.max(95, Math.min(99, prev.wasteDiverted + (Math.random() - 0.5) * 1)),
+        waterSaved: Math.max(2.0, Math.min(3.0, prev.waterSaved + (Math.random() - 0.5) * 0.2)),
+        co2Reduced: Math.max(800, Math.min(900, prev.co2Reduced + (Math.random() - 0.5) * 20)),
+        renewableEnergy: Math.max(70, Math.min(85, prev.renewableEnergy + (Math.random() - 0.5) * 3))
+      }));
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="space-y-6">
       {/* Hero Section */}
@@ -103,17 +129,17 @@ export function ValueChainOverview() {
               with integrated circularity and sustainability metrics.
             </p>
             <div className="flex flex-wrap gap-4">
-              <div className="bg-white/20 rounded-lg px-4 py-2">
+              <div className="bg-white/20 rounded-lg px-4 py-2 animate-pulse">
                 <div className="text-sm font-medium">Overall Efficiency</div>
-                <div className="text-2xl font-bold">89.2%</div>
+                <div className="text-2xl font-bold">{realTimeMetrics.overallEfficiency.toFixed(1)}%</div>
               </div>
-              <div className="bg-white/20 rounded-lg px-4 py-2">
+              <div className="bg-white/20 rounded-lg px-4 py-2 animate-pulse">
                 <div className="text-sm font-medium">Carbon Savings</div>
-                <div className="text-2xl font-bold">34%</div>
+                <div className="text-2xl font-bold">{Math.round(realTimeMetrics.carbonSavings)}%</div>
               </div>
-              <div className="bg-white/20 rounded-lg px-4 py-2">
+              <div className="bg-white/20 rounded-lg px-4 py-2 animate-pulse">
                 <div className="text-sm font-medium">Waste Diverted</div>
-                <div className="text-2xl font-bold">97%</div>
+                <div className="text-2xl font-bold">{Math.round(realTimeMetrics.wasteDiverted)}%</div>
               </div>
             </div>
           </div>
@@ -219,7 +245,7 @@ export function ValueChainOverview() {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Water Conservation</p>
-                <p className="text-2xl font-bold">2.4M L</p>
+                <p className="text-2xl font-bold animate-pulse">{realTimeMetrics.waterSaved.toFixed(1)}M L</p>
                 <p className="text-sm text-success">+18% vs last month</p>
               </div>
             </div>
@@ -234,7 +260,7 @@ export function ValueChainOverview() {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">CO₂ Reduction</p>
-                <p className="text-2xl font-bold">847 tons</p>
+                <p className="text-2xl font-bold animate-pulse">{Math.round(realTimeMetrics.co2Reduced)} tons</p>
                 <p className="text-sm text-success">+12% vs target</p>
               </div>
             </div>
@@ -249,7 +275,7 @@ export function ValueChainOverview() {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Renewable Energy</p>
-                <p className="text-2xl font-bold">76%</p>
+                <p className="text-2xl font-bold animate-pulse">{Math.round(realTimeMetrics.renewableEnergy)}%</p>
                 <p className="text-sm text-success">+8% vs last week</p>
               </div>
             </div>

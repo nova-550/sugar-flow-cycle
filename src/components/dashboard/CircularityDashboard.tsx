@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
@@ -69,6 +70,27 @@ const circularityFlows = [
 ];
 
 export function CircularityDashboard() {
+  const [liveMetrics, setLiveMetrics] = useState({
+    wasteDiversion: 97.2,
+    energyRecovery: 95.1,
+    waterRecycling: 98.7,
+    carbonNeutral: 89.4
+  });
+
+  // Simulate live data updates
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLiveMetrics(prev => ({
+        wasteDiversion: Math.max(95, Math.min(99, prev.wasteDiversion + (Math.random() - 0.5) * 0.5)),
+        energyRecovery: Math.max(90, Math.min(98, prev.energyRecovery + (Math.random() - 0.5) * 1)),
+        waterRecycling: Math.max(96, Math.min(99.5, prev.waterRecycling + (Math.random() - 0.5) * 0.3)),
+        carbonNeutral: Math.max(85, Math.min(95, prev.carbonNeutral + (Math.random() - 0.5) * 1.5))
+      }));
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -93,7 +115,7 @@ export function CircularityDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">Waste Diversion</p>
-                <p className="text-3xl font-bold text-success">97.2%</p>
+                <p className="text-3xl font-bold text-success animate-pulse">{liveMetrics.wasteDiversion.toFixed(1)}%</p>
                 <p className="text-sm text-success flex items-center gap-1">
                   <TrendingUp className="h-3 w-3" />
                   +2.1% vs target
@@ -109,7 +131,7 @@ export function CircularityDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">Energy Recovery</p>
-                <p className="text-3xl font-bold text-energy-primary">95.1%</p>
+                <p className="text-3xl font-bold text-energy-primary animate-pulse">{liveMetrics.energyRecovery.toFixed(1)}%</p>
                 <p className="text-sm text-success flex items-center gap-1">
                   <TrendingUp className="h-3 w-3" />
                   +1.8% this month
@@ -125,7 +147,7 @@ export function CircularityDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">Water Recycling</p>
-                <p className="text-3xl font-bold text-secondary">98.7%</p>
+                <p className="text-3xl font-bold text-secondary animate-pulse">{liveMetrics.waterRecycling.toFixed(1)}%</p>
                 <p className="text-sm text-success flex items-center gap-1">
                   <TrendingUp className="h-3 w-3" />
                   Leading industry
@@ -141,7 +163,7 @@ export function CircularityDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">Carbon Neutral</p>
-                <p className="text-3xl font-bold text-success">89.4%</p>
+                <p className="text-3xl font-bold text-success animate-pulse">{liveMetrics.carbonNeutral.toFixed(1)}%</p>
                 <p className="text-sm text-success flex items-center gap-1">
                   <TrendingUp className="h-3 w-3" />
                   +5.2% YoY
