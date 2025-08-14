@@ -4,6 +4,12 @@ import { ValueChainOverview } from "@/components/dashboard/ValueChainOverview";
 import { CircularityDashboard } from "@/components/dashboard/CircularityDashboard";
 import { AIInsights } from "@/components/dashboard/AIInsights";
 import { Analytics } from "@/components/dashboard/Analytics";
+import { PlantModel3D } from "@/components/visualizations/PlantModel3D";
+import { ProcessFlow } from "@/components/visualizations/ProcessFlow";
+import { WhatIfAnalysis } from "@/components/features/WhatIfAnalysis";
+import { PredictiveMaintenance } from "@/components/features/PredictiveMaintenance";
+import { VoiceCommands } from "@/components/features/VoiceCommands";
+import { RoleBasedDashboards } from "@/components/features/RoleBasedDashboards";
 import { Card, CardContent } from "@/components/ui/card";
 import { Settings } from "lucide-react";
 
@@ -15,6 +21,18 @@ const Index = () => {
     switch (activeTab) {
       case "overview":
         return <ValueChainOverview />;
+      case "3d-plant":
+        return <PlantModel3D />;
+      case "process-flow":
+        return <ProcessFlow />;
+      case "what-if":
+        return <WhatIfAnalysis />;
+      case "predictive":
+        return <PredictiveMaintenance />;
+      case "voice":
+        return <VoiceCommands />;
+      case "role-dashboards":
+        return <RoleBasedDashboards />;
       case "circularity":
         return <CircularityDashboard />;
       case "ai":
